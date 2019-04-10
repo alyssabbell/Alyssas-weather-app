@@ -3,19 +3,13 @@
 let inputField = $("#location");
 
 // When enter key is pressed inside input field:
-//$(inputField).keypress(function(event) {
 $(inputField).keydown(function(event){
   var key = event.charCode ? event.charCode : event.keyCode ? event.keyCode : 0;
 
-// 13 = return keypress
-//if(event.which === 13)
 if(key === 13)
 {
   event.preventDefault();
-  // check input has a valid zipcode
-  // DOM will throw this error and this if statement is not executed:
-  // {"error":{"code":1006,"message":"No matching location found."}
-  //if(isValidUSZip(inputField.val()) === false || inputField.val().length < 5)
+
   if(inputField.val().length != 5)
 
   {
@@ -30,7 +24,6 @@ if(key === 13)
     //
 
     // clears all innerHTML
-    //$(".cards").text("");
     $("h2").text("");
     $(".cards").text("");
 
@@ -45,7 +38,7 @@ if(key === 13)
             url: url,
             success: function(result){
 
-              //console.log(result);
+              console.log(result);
 
               let forecast = result.forecast.forecastday;
 
