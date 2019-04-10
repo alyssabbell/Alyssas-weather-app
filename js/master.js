@@ -2,21 +2,10 @@
 // grab input field control
 let inputField = $("#location");
 
-// declare function to validate US zip Code
-// returns T or F
-// function isValidUSZip(inputLocation) {
-// console.log(/^\d{5}(-\d{4})?$/.test(inputLocation));
-//  return /^\d{5}(-\d{4})?$/.test(inputLocation);
-// }
-
 // When enter key is pressed inside input field:
 //$(inputField).keypress(function(event) {
 $(inputField).keydown(function(event){
   var key = event.charCode ? event.charCode : event.keyCode ? event.keyCode : 0;
-
-// clears all innerHTML
-$(".cards").text("");
-$("h2").text("");
 
 // 13 = return keypress
 //if(event.which === 13)
@@ -39,6 +28,12 @@ if(key === 13)
 
     let $main = $("<main/>", {});
     //
+
+    // clears all innerHTML
+    //$(".cards").text("");
+    $("h2").text("");
+    $(".cards").text("");
+
     $("header").append($main);
 
     $(document).ready( function() {
@@ -88,3 +83,14 @@ if(key === 13)
   }
 }
 });
+
+
+
+
+// // declare function to validate US zip Code
+// // returns T or F
+// // function isValidUSZip(inputLocation) {
+// // console.log(/^\d{5}(-\d{4})?$/.test(inputLocation));
+// //  return /^\d{5}(-\d{4})?$/.test(inputLocation);
+// // }
+//
