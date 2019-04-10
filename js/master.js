@@ -4,10 +4,10 @@ let inputField = $("#location");
 
 // declare function to validate US zip Code
 // returns T or F
-function isValidUSZip(inputLocation) {
-console.log(/^\d{5}(-\d{4})?$/.test(inputLocation));
- return /^\d{5}(-\d{4})?$/.test(inputLocation);
-}
+// function isValidUSZip(inputLocation) {
+// console.log(/^\d{5}(-\d{4})?$/.test(inputLocation));
+//  return /^\d{5}(-\d{4})?$/.test(inputLocation);
+// }
 
 // When enter key is pressed inside input field:
 //$(inputField).keypress(function(event) {
@@ -26,7 +26,9 @@ if(key === 13)
   // check input has a valid zipcode
   // DOM will throw this error and this if statement is not executed:
   // {"error":{"code":1006,"message":"No matching location found."}
-  if(isValidUSZip(inputField.val()) === false || inputField.val().length < 5)
+  //if(isValidUSZip(inputField.val()) === false || inputField.val().length < 5)
+  if(inputField.val().length != 5)
+
   {
     alert("That is not a valid US Zip Code");
     inputField.val("");
@@ -47,6 +49,9 @@ if(key === 13)
           {
             url: url,
             success: function(result){
+
+              //console.log(result);
+
               let forecast = result.forecast.forecastday;
 
               let $locationH2 = $("<h2/>", { id: "location-banner", text: "7-Day Forecast for " + result.location.name});
@@ -65,7 +70,17 @@ if(key === 13)
                 $article.append($highLowh3);
 
                 $(".cards").append($article);
+
+                inputField.val("");
                 })
+            },
+            error: function(error) {
+              console.log(error);
+              if(error.statusText!= "")
+              {
+                alert("That is not a valid US Zip Code");
+                inputField.val("");
+              }
             }
         }); // end $.ajax
 
